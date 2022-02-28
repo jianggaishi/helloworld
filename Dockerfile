@@ -1,4 +1,6 @@
 FROM jdk1.8:latest
-MAINTAINER jiangmeng 
-ADD Helloworld-0.0.1-SNAPSHOT.jar app.jar
-CMD java -jar app.jar
+VOLUME /tmp
+COPY Helloworld-0.0.1-SNAPSHOT.jar app.jar
+RUN bash -c "touch /app.jar"
+EXPOSE 8080
+ENTRYPOINT ["java", "-jar", "app.jar"]
